@@ -82,3 +82,20 @@ systemctl start httpd
 - **3. change the MAC Address Policy to "Generate new MAC address for all network cards" and press next.**</br></br>
 ![image](images/image6.png "clone")
 - 4. Press "Full clone" and press finish.
+
+--- 
+
+## **4. Setup the connections**
+- **Follow the next steps to configure your network:**
+1. Click on wired settings;
+
+![image](images/image7.png "wired settings")
+2. Click on the enp0s8 settings; 
+![image](images/image8.png "click on the enp0s8 settings")
+3. Setup the addresses and networks for all your VMs. 
+![image](images/image9.png "enps0s8 settings")
+
+- ***Tip - use the following image to help you setup your network:***
+![image](images/image10.jpg "network setup")
+
+---
