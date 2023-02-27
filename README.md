@@ -129,16 +129,20 @@ yum install wireshark-gnome
 ``` bash
 sudo wireshark
 ```
-### **7.2. Select the following interfaces (enp0s8 and tun0) and press start:
+### **7.2. Select the following interfaces (enp0s8 and tun0) and press start:**
+
 ![image](images/image11.png "wireshark setup")
 
-### **7.3 Click on a package, with the right button of the mouse, with an OpenVPN protocol:
+### **7.3 Click on a package, with the right button of the mouse, with an OpenVPN protocol:**
+
 ![image](images/image12.png "OpenVPN protocol")
 
-### **7.4 Select "Decode as":
+### **7.4 Select "Decode as":**
+
 ![image](images/image13.png "Decode as")
 
-### **7.4 Select "Do not decode" and press ok:
+### **7.4 Select "Do not decode" and press ok:**
+
 ![image](images/image14.png "Do not decode")
 
 ---
