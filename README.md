@@ -155,7 +155,7 @@ sudo wireshark
 
 ![image](images/image13.png "Decode as")
 
-- ### **7.5 Should look something like this:**
+- ### **7.5 Should look something like this (you can look at the provided by the teacher):**
 
 ![image](images/image14.png "Do not decode")
 
