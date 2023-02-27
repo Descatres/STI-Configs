@@ -42,37 +42,37 @@ yum install openvpn
 cd /usr/share/doc/openvpn-2.4.12/
 ```
 - **2.3. Go to this folder:**
-``` bash
+```bash
 cd sample/sample-config-files/
 ```
 - **2.4. And copy the server.conf file to another location (don't change the original)**
-``` bash
+```bash
 cp server.conf {folder}
 ```
 - **2.5. Change the permissions of the file in case you can't edit it (you may not need this step)**
-``` bash
+```bash
 sudo chmod o+rwx {path/roadwarrior-client.conf}
 ```
 
 - **2.6. Copy the roadwarrior-client.conf to the same location where you saved the server.conf file**
-``` bash
+```bash
 cp roadwarrior-client.conf {path}
 ```
 - **2.7. Change the permissions of the file in case you can't edit it (you may not need this step)**
-``` bash
+```bash
 sudo chmod o+rwx {path/roadwarrior-client.conf}
 ```
 - **2.8. Check if everything is in order with ifconfig** (The first two entries show what you are looking for - enp0s3 and enp0s8)**:**
-``` bash
+```bash
 ifconfig
 ```
 
 - **2.9. Install Apache server** (thecnically only needed on the VPN VM, but it's fine to have it on all of them)**:**
-``` bash
+```bash
 yum install httpd
 ```
 - **Note:** to run the apache server, afterwards, run the following command:
-``` bash
+```bash
 systemctl start httpd
 ```
 ---
@@ -112,7 +112,7 @@ systemctl start httpd
 
 ## **5. Turn off your firewall before proceding:**
 
-``` bash
+```bash
 systemctl stop firewalld
 ```
 ---
@@ -121,13 +121,13 @@ systemctl stop firewalld
 ## COMPLETE BOTH (server.conf and roadwarrior-client.conf) FILES BEFORE PROCEDING!
 - ### **6.1. On the Client VM run:** 
 
-``` bash
+```bash
 openvpn {path/roadwarrior-client.conf}
 ```
 
 - ### **6.2 On the Server VM run:**
 
-``` bash
+```bash
 openvpn {path/server.conf}
 ```
 
@@ -143,7 +143,7 @@ yum install wireshark-gnome
 
 - ### **7.1. Run Wireshark (as root in order to have full capabilities):**
 
-``` bash
+```bash
 sudo wireshark
 ```
 
@@ -164,3 +164,68 @@ sudo wireshark
 ![image](images/image14.png "Possible output")
 
 ---
+## **8. Two-Factor Authenticator"
+
+- ### **8.1. Install google authenticator**
+```bash
+yum install google-autenticator*
+```
+
+- ### **8.2. Add clients:**
+```bash
+useradd gauth
+mkdir /etc/openvpn/google-autenticator
+chown gauth:gauth /etc/openvpn/google-authenticator && chmod 700 /etc/openvpn/google-authenticator
+semanage fcontext -a -t openvpn_etc_rw_t -ff '/etc/openvpn/google-authenticator(/.*)?'
+```
+- ### **8.3. Create file create_gauth.sh**
+```bash
+nano /root/create_gauth.sh
+```
+  + #### **8.3.1. Paste the following text:**
+  ```bash
+#!/bin/sh
+
+# Parse arguments
+USERNAME="$1"
+
+if [ -z "$USERNAME" ]; then
+  echo "Usage: $(basename $0) <username>"
+  exit 2
+fi
+
+# Set the label the user will see when importing the token:
+LABEL='OpenVPN Server'
+
+su -c "google-authenticator -t -d -r3 -R30 -W -f -l \"${LABEL}\" -s /etc/openvpn/google-authenticator/${USERNAME}" - gauth
+  ```
+  
+- ### **8.4. Edit create_gauth.sh permissions**
+```bash
+chmod 700 /root/create_gauth.sh
+```
+- ### **8.5. Add user**
+```bash
+ useradd -s /sbin/nologin cliente
+ passwd cliente
+ /root/create_gauth.sh cliente
+```
+- ### **8.6. Add the following line on the VPN server.conf file:**
+```conf
+plugin /usr/lib64/openvpn/plugins/openvpn-plugin-auth-pam.so
+```
+![image](images/image12.png "VPN server.conf")
+
+- ### **8.7. Create and setup openvpn file on pam.d**
+- #### **8.7.1. Create file**
+```bash
+ nano /etc/pam.d/openvpn
+```
+- #### **8.7.2. Paste the following text there:**
+```
+auth [user_unknown=ignore success=ok ignore=ignore default=bad] pam_securetty.so
+auth required /lib64/security/pam_google_authenticator.so secret=/etc/openvpn/google-authenticator/${USER} user=gauth forward_pass
+auth include system-auth
+account include system-auth
+password include system-auth
+```
