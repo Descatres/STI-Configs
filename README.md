@@ -78,9 +78,9 @@ systemctl start httpd
 
 </center>
 
-- **1. Press right click on top of your VM and select clone (Ctrl + O).**
-- **2. Change the name accordingly to if it is the VPN or the Server VM. (not mandatory but it helps to keep track of the VMs)**
-- **3. change the MAC Address Policy to "Generate new MAC address for all network cards" and press next.**</br></br>
+- **3.1. Press right click on top of your VM and select clone (Ctrl + O).**
+- **3.2. Change the name accordingly to if it is the VPN or the Server VM. (not mandatory but it helps to keep track of the VMs)**
+- **3.3. change the MAC Address Policy to "Generate new MAC address for all network cards" and press next.**</br></br>
 ![image](images/image6.png "clone")
 - 4. Press "Full clone" and press finish.
 
@@ -88,15 +88,15 @@ systemctl start httpd
 
 ## **4. Setup the connections**
 - **Follow the next steps to configure your network:**
-1. Click on wired settings;
+4.1. Click on wired settings;
 
 ![image](images/image7.png "wired settings")
 
-2. Click on the enp0s8 settings; 
+4.2. Click on the enp0s8 settings; 
 
 ![image](images/image8.png "click on the enp0s8 settings")
 
-3. Setup the addresses and networks for all your VMs. 
+4.3. Setup the addresses and networks for all your VMs. 
 
 ![image](images/image9.png "enps0s8 settings")
 
@@ -105,12 +105,13 @@ systemctl start httpd
 ![image](images/image10.jpg "network setup")
 
 ---
+
 ## **5. Turn off your firewall before proceding:**
 
 ``` bash
 systemctl stop firewalld
 ```
-
+---
 
 ## **6. Prepare your server.conf and roadwarrior-client.conf**
 
@@ -127,6 +128,8 @@ openvpn {path/server.conf}
 ```
 
 and type your password when prompted.
+
+---
 
 ## **7. Install Wireshark on the Client VM (optional):**
 
