@@ -2,10 +2,14 @@
 
 # **PL3 Setup (currently under maintenance)**
 
-## Warning
+## **Warnings**
 
 - ### All of these configurations are made on CentOS 7, make sure to use the same image, which you can get it [here](http://ftp.dei.uc.pt/pub/linux/CentOS/7.9.2009/isos/x86_64/) and select the "**CentOS-7-x86_64-Everything-2207-02.iso**" image. Also, it was used VirtualBox which you can get [here](https://www.virtualbox.org/wiki/Downloads) (you can use others like VmWare, but there might be some visual changes).
 
+- ### **Don't forget** to fill/complete your server.conf and roadwarrior-client.conf files! 
+  
+---
+  
 ## **1. Connect the wifi adapters:**
 </center>
 
