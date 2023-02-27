@@ -103,3 +103,21 @@ systemctl start httpd
 ![image](images/image10.jpg "network setup")
 
 ---
+## **5. Turn off your firewall before proceding:**
+``` bash
+systemctl stop firewalld
+```
+
+
+## **6. Prepare your server.conf and roadwarrior-client.conf**
+
+### **6.1. On the Client VM run:** 
+``` bash
+openvpn {path/roadwarrior-client.conf}
+```
+### **6.2 On the Server VM run:**
+``` bash
+openvpn {path/server.conf}
+```
+and type your password when prompted.
+
