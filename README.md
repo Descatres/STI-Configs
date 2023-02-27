@@ -147,15 +147,15 @@ sudo wireshark
 
 ![image](images/image11.png "wireshark setup")
 
-- ### **7.3 Click on a package, with the right button of the mouse, with an OpenVPN protocol:**
+- ### **7.3 Click on a package, with the right button of the mouse, with an OpenVPN protocol and select "Decode as":**
 
 ![image](images/image12.png "OpenVPN protocol")
 
-- ### **7.4 Select "Decode as":**
+- ### **7.4 Select "Do not decode" and press ok:**
 
 ![image](images/image13.png "Decode as")
 
-- ### **7.5 Select "Do not decode" and press ok:**
+- ### **7.5 Should look something like this:**
 
 ![image](images/image14.png "Do not decode")
 
