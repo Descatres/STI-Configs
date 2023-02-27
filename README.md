@@ -174,8 +174,8 @@ yum install google-autenticator*
 - ### **8.2. Add clients:**
 ```bash
 useradd gauth
-mkdir /etc/openvpn/google-autenticator
-chown gauth:gauth /etc/openvpn/google-authenticator && chmod 700 /etc/openvpn/google-authenticator
+mkdir /etc/openvpn/google-authenticator
+cd /etc/openvpn && chown gauth:gauth google-authenticator && chmod 700 google-authenticator
 semanage fcontext -a -t openvpn_etc_rw_t -ff '/etc/openvpn/google-authenticator(/.*)?'
 ```
 - ### **8.3. Create file create_gauth.sh**
