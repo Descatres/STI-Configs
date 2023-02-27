@@ -212,7 +212,7 @@ chmod 700 /root/create_gauth.sh
 ```
 - ### **8.6. Add the following line on the VPN server.conf file:**
 ```conf
-plugin /usr/lib64/openvpn/plugins/openvpn-plugin-auth-pam.so
+plugin /usr/lib64/openvpn/plugins/openvpn-plugin-auth-pam.so openvpn
 ```
 ![image](images/image12.png "VPN server.conf")
 
@@ -229,3 +229,16 @@ auth include system-auth
 account include system-auth
 password include system-auth
 ```
+
+- ### **8.8. Install Google Authenticator on your smartphone and scan the generated QR code when you ran "/root/create_gauth.sh cliente". This should give you a key with 6 digits which will update from time to time.**
+
+- ### **8.9. Run the following commands:**
+- #### **8.9.1 On the VPN Server:**
+```bash
+openvpn {path}/server.conf
+```
+- #### **8.9.2 On the Client:**
+```bash
+openvpn {path}/roadwarrior-client.conf
+```
+- ### **8.10. CAREFUL! When asked for your password on the authentication place your password followed by the code generated!**
