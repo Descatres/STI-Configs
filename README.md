@@ -29,44 +29,41 @@
 
 </center> 
 
-- **1. Install openvpn:**
+- **2.1. Install openvpn:**
 ``` bash
 yum install openvpn
 ```
-- **2. Go to this folder:**
+- **2.2. Go to this folder:**
 ```bash
 cd /usr/share/doc/openvpn-2.4.12/
 ```
-- **3. Go to this folder:**
+- **2.3. Go to this folder:**
 ``` bash
 cd sample/sample-config-files/
 ```
-- **4. And copy the server.conf file to another location (don't change the original)**
+- **2.4. And copy the server.conf file to another location (don't change the original)**
 ``` bash
 cp server.conf {folder}
 ```
-- **5. Change the permissions of the file in case you can't edit it (you may not need this step)**
+- **2.5. Change the permissions of the file in case you can't edit it (you may not need this step)**
 ``` bash
 sudo chmod o+rwx {path/roadwarrior-client.conf}
 ```
-- **6. Copy the next file to the openvpn folder:**
-``` bash
-cp distro/rpm/openvpn.init.d.rhel /etc/rc.d/init.d/openvpn
-```
-- **7. Copy the roadwarrior-client.conf to the same location where you saved the server.conf file**
+
+- **2.6. Copy the roadwarrior-client.conf to the same location where you saved the server.conf file**
 ``` bash
 cp roadwarrior-client.conf {path}
 ```
-- **8. Change the permissions of the file in case you can't edit it (you may not need this step)**
+- **2.7. Change the permissions of the file in case you can't edit it (you may not need this step)**
 ``` bash
 sudo chmod o+rwx {path/roadwarrior-client.conf}
 ```
-- **9. Check if everything is in order with ifconfig** (The first two entries show what you are looking for - enp0s3 and enp0s8)**:**
+- **2.8. Check if everything is in order with ifconfig** (The first two entries show what you are looking for - enp0s3 and enp0s8)**:**
 ``` bash
 ifconfig
 ```
 
-- **10. Install Apache server** (thecnically only needed on the VPN VM, but it's fine to have it on all of them)**:**
+- **2.9. Install Apache server** (thecnically only needed on the VPN VM, but it's fine to have it on all of them)**:**
 ``` bash
 yum install httpd
 ```
