@@ -164,7 +164,7 @@ sudo wireshark
 ![image](images/image14.png "Possible output")
 
 ---
-## **8. Two-Factor Authenticator"
+## **8. Two-Factor Authenticator**
 
 - ### **8.1. Install google authenticator**
 ```bash
