@@ -94,16 +94,22 @@ systemctl start httpd
 1. Click on wired settings;
 
 ![image](images/image7.png "wired settings")
+
 2. Click on the enp0s8 settings; 
+
 ![image](images/image8.png "click on the enp0s8 settings")
+
 3. Setup the addresses and networks for all your VMs. 
+
 ![image](images/image9.png "enps0s8 settings")
 
 - ***Tip - use the following image to help you setup your network:***
+
 ![image](images/image10.jpg "network setup")
 
 ---
 ## **5. Turn off your firewall before proceding:**
+
 ``` bash
 systemctl stop firewalld
 ```
@@ -112,23 +118,31 @@ systemctl stop firewalld
 ## **6. Prepare your server.conf and roadwarrior-client.conf**
 
 - ### **6.1. On the Client VM run:** 
+
 ``` bash
 openvpn {path/roadwarrior-client.conf}
 ```
+
 - ### **6.2 On the Server VM run:**
+
 ``` bash
 openvpn {path/server.conf}
 ```
+
 and type your password when prompted.
 
 ## **7. Install Wireshark on the Client VM (optional):**
+
 ```bash
 yum install wireshark-gnome
 ```
+
 - ### **7.1. Run Wireshark (as root in order to have full capabilities):**
+
 ``` bash
 sudo wireshark
 ```
+
 - ### **7.2. Select the following interfaces (enp0s8 and tun0) and press start:**
 
 ![image](images/image11.png "wireshark setup")
