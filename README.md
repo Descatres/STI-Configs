@@ -141,7 +141,7 @@ sudo wireshark
 
 ![image](images/image13.png "Decode as")
 
-### **7.4 Select "Do not decode" and press ok:**
+### **7.5 Select "Do not decode" and press ok:**
 
 ![image](images/image14.png "Do not decode")
 
