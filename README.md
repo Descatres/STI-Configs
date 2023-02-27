@@ -165,7 +165,7 @@ sudo wireshark
 
 ---
 ## **8. Two-Factor Authenticator**
-
+- This is **ALL** made on the VPN Server machine **ONLY**
 - ### **8.1. Install google authenticator**
 ```bash
 yum install google-autenticator*
