@@ -118,7 +118,7 @@ systemctl stop firewalld
 ---
 
 ## **6. Prepare your server.conf and roadwarrior-client.conf**
-
+## COMPLETE BOTH (server.conf and roadwarrior-client.conf) FILES BEFORE PROCEDING!
 - ### **6.1. On the Client VM run:** 
 
 ``` bash
