@@ -258,5 +258,7 @@ and check if the output is:
 SSLOCSPEnable on 
     
 ```
-- If not, run ``` sudo yum install mod_ssl ```
+- If not, [run](https://unix.stackexchange.com/questions/263401/what-do-i-do-if-i-cant-find-ssl-conf-file-in-a-centos-server#:~:text=sudo%20yum%20install%20mod_ssl) ``` sudo yum install mod_ssl ```
+
+
 [ssl.conf](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslocspdefaultresponder:~:text=and%20SSLOCSPOverrideResponder%20directives.-,Example,on%0ASSLOCSPDefaultResponder%20%22http%3A//responder.example.com%3A8888/responder%22%0ASSLOCSPOverrideResponder%20on,-SSLOCSPNoverify%20Directive)
