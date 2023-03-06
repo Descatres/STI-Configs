@@ -241,4 +241,22 @@ openvpn {path}/server.conf
 ```bash
 openvpn {path}/roadwarrior-client.conf
 ```
-- ### **8.10. CAREFUL! When asked for your password on the authentication place your password followed by the code generated!**
+- ### **8.10. CAREFUL! When asked for your password on the authentication place your password followed by the code generated! [Source](https://github.com/evgeny-gridasov/openvpn-otp#:~:text=When%20users%20vpn%20in%2C%20they%20will%20need%20to%20provide%20their%20username%20and%20pin%2Bcurrent%20OTP%20number%20from%20the%20OTP%20token.%20Examples%20for%20users%20bob%2C%20alice%20and%20john%3A)**
+
+--- 
+## **9. Apache**
+- TODO
+---
+
+## **10. OCSP**
+- ### **10.1. Search for the file ssl.conf (on the vpn server) on:**
+```bash
+more /etc/httpd/conf.d/ssl.conf
+```
+and check if the output is: 
+``` (...) 
+SSLOCSPEnable on 
+    
+```
+- If not, run ``` sudo yum install mod_ssl ```
+[ssl.conf](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslocspdefaultresponder:~:text=and%20SSLOCSPOverrideResponder%20directives.-,Example,on%0ASSLOCSPDefaultResponder%20%22http%3A//responder.example.com%3A8888/responder%22%0ASSLOCSPOverrideResponder%20on,-SSLOCSPNoverify%20Directive)
