@@ -7,7 +7,19 @@
 - ### All of these configurations are made on CentOS 7, make sure to use the same image, which you can get it [here](http://ftp.dei.uc.pt/pub/linux/CentOS/7.9.2009/isos/x86_64/) and select the "**CentOS-7-x86_64-Everything-2207-02.iso**" image. Also, it was used VirtualBox which you can get [here](https://www.virtualbox.org/wiki/Downloads) (you can use others like VmWare, but there might be some visual changes).
 
 - ### **Don't forget** to fill/complete your server.conf and roadwarrior-client.conf files! 
-  
+---
+# **Table of contents** 
+- [1. Connect the WiFi adapters](#1-connect-the-wifi-adapters)
+- [2. Client](#2-client)
+- [3. Clone the VM](#3-clone-the-vm)
+- [4. Setup the connections](#4-setup-the-connections)
+- [5. Turn off your firewall before proceding](#5-turn-off-your-firewall-before-proceding)
+- [6. Prepare your server.conf and roadwarrior-client.conf](#6-prepare-your-serverconf-and-roadwarrior-clientconf)
+- [7. Install Wireshark on the Client VM (optional)](#7-install-wireshark-on-the-client-vm-optional)
+- [8. Two-Factor Authenticator](#8-two-factor-authenticator)
+- [9. Apache](#9-apache)
+- [10. OCSP](#10-ocsp)
+
 ---
   
 ## **1. Connect the wifi adapters:**
@@ -262,3 +274,4 @@ SSLOCSPEnable on
 
 
 [ssl.conf](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslocspdefaultresponder:~:text=and%20SSLOCSPOverrideResponder%20directives.-,Example,on%0ASSLOCSPDefaultResponder%20%22http%3A//responder.example.com%3A8888/responder%22%0ASSLOCSPOverrideResponder%20on,-SSLOCSPNoverify%20Directive)
+
