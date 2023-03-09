@@ -260,7 +260,7 @@ openvpn {path}/roadwarrior-client.conf
 - TODO
 ---
 
-## **[10. OCSP](/images/OCSP)**
+## **[10. OCSP](/images/OCSP/images.md)**
 - ### **10.1. Search for the file ssl.conf (on the vpn server) on:**
 ```bash
 nano /etc/httpd/conf.d/ssl.conf
