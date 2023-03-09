@@ -260,22 +260,47 @@ openvpn {path}/roadwarrior-client.conf
 - TODO
 ---
 
-## **10. OCSP**
+## **[10. OCSP](/images/OCSP)**
 - ### **10.1. Search for the file ssl.conf (on the vpn server) on:**
 ```bash
-more /etc/httpd/conf.d/ssl.conf
+nano /etc/httpd/conf.d/ssl.conf
 ```
-and check if the output is: 
-``` (...) 
-SSLOCSPEnable on 
+It most likely it is not there or may not have the proper setup.
+
+
+- In order to do so, run [``` sudo yum install mod_ssl ```](https://unix.stackexchange.com/questions/263401/what-do-i-do-if-i-cant-find-ssl-conf-file-in-a-centos-server#:~:text=sudo%20yum%20install%20mod_ssl), if you don't have it installed yet.
+
+- And paste the following [commands](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslocspdefaultresponder:~:text=and%20SSLOCSPOverrideResponder%20directives.-,Example,on%0ASSLOCSPDefaultResponder%20%22http%3A//responder.example.com%3A8888/responder%22%0ASSLOCSPOverrideResponder%20on,-SSLOCSPNoverify%20Directive) on the same file:
+```
+// SSLVerifyClient on - only if needed, most likely it is not
+SSLOCSPEnable on
+//Change the URI for the Responder:
+SSLOCSPDefaultResponder "http://responder.example.com:8888/responder" 
+SSLOCSPOverrideResponder off
 ```
 
-- If not, run [``` sudo yum install mod_ssl ```](https://unix.stackexchange.com/questions/263401/what-do-i-do-if-i-cant-find-ssl-conf-file-in-a-centos-server#:~:text=sudo%20yum%20install%20mod_ssl)
 
-- Afterwards paste the following commands on the same file:
-[```SSLVerifyClient on
-  SSLOCSPEnable on
-  SSLOCSPDefaultResponder "http://responder.example.com:8888/responder"
-  SSLOCSPOverrideResponder on
-  ```](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslocspdefaultresponder:~:text=and%20SSLOCSPOverrideResponder%20directives.-,Example,on%0ASSLOCSPDefaultResponder%20%22http%3A//responder.example.com%3A8888/responder%22%0ASSLOCSPOverrideResponder%20on,-SSLOCSPNoverify%20Directive)
+- ### **10.2. OCSP information inclusion on the certificates**
+Run ``` nano /etc/pki/tls/openssl.cnf ``` and paste (don't forget to change the URI) the last line:
+```
+(...)
+[usr_cert]
+# These extensions are added when "ca" signs a request.
+[usr_cert]
+authorityInfoAccess = OCSP;URI:http://responder.example.com // Copy this line and change the URI (just the domain)
+``` 
 
+- #### **10.2.1. Generate a new user certificate with your private CA and convert it to PKCS12**
+(Check the 2nd PL slides)
+
+- and check if the Authority Information Access has the URI you seted up for the OCSP:
+run ``` openssl x509 -in {path}/client.crt -text | more``` and search for the following output (or similar):
+```
+(...)
+    X509v3 extensions:
+      Authority Information Access
+        OCSP - URI:http://responder.example.com
+```
+- **DON'T FORGET TO IMPORT THE CERTIFICATE TO YOUR BORWSER!**
+
+- #### **10.2.2. Generate a new Apache certificate with your private CA and convert it to PKCS12**
