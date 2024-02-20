@@ -1,6 +1,6 @@
 <center>
 
-# **PL3 Setup (currently under maintenance)**
+# **PL3 Setup**
 
 ## **Warnings**
 
