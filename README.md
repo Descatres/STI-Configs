@@ -1,6 +1,6 @@
 <center>
 
-# **PL3 Setup**
+# **STI Configs**
 
 ## **Warnings**
 
