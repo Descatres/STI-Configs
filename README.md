@@ -236,7 +236,7 @@ plugin /usr/lib64/openvpn/plugins/openvpn-plugin-auth-pam.so openvpn
 - #### **8.7.2. Paste the following text there:**
 ```
 auth [user_unknown=ignore success=ok ignore=ignore default=bad] pam_securetty.so
-auth required /lib64/security/pam_google_authenticator.so secret=/etc/openvpn/google-authenticator/${USER} user=gauth forward_pass
+auth required /lib64/security/pam_google_authenticator.so secret=/etc/openvpn/google-authenticator/${USER} user=gauth forward_pass debug
 auth include system-auth
 account include system-auth
 password include system-auth
